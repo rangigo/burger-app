@@ -1,0 +1,19 @@
+.Menu {
+  margin: 10px 0;
+  display: block;
+  box-sizing: border-box;
+  height: 100%;
+  cursor: pointer;
+}
+
+.Menu img {
+  height: 100%;
+}
+
+@media (min-width: 500px) {
+  .Menu {
+    display: none;
+  }
+
+
+}

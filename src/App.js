@@ -1,24 +1,22 @@
+/*
+  rce -> stateful component
+  rfe -> stateless component
+*/
+
+
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import Layout from './hoc/Layout/Layout'
+import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder'
 
 class App extends Component {
-  state = {
-    persons: [
-      {id: "asdf"}
-    ]
-  }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Layout>
+          <BurgerBuilder/>
+        </Layout>
       </div>
     );
   }
