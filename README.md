@@ -1,4 +1,4 @@
-## My first react project replicating a simple burger application
+## My first React.js project replicating a simple burger application
 
 How to use:
 1) Clone this GitHub project
