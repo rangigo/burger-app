@@ -5,15 +5,24 @@
 
 import React, { Component } from "react"
 
+import { Switch, Route } from 'react-router-dom'
+
 import Layout from "./hoc/Layout/Layout"
 import BurgerBuilder from "./containers/BurgerBuilder/BurgerBuilder"
+import CheckOut from './containers/Checkout/Checkout'
+import Orders from './containers/Orders/Orders'
 
 class App extends Component {
   render() {
     return (
       <div>
         <Layout>
-          <BurgerBuilder />
+          <Switch>
+            <Route path='/checkout' component={CheckOut} />
+            <Route path='/orders' component={Orders} />
+            <Route path='/' component={BurgerBuilder}  />
+            {/* <Route render={() => <h1>Error</h1>} /> */}
+          </Switch>
         </Layout>
       </div>
     )
