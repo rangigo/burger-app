@@ -4,7 +4,7 @@ import { Route } from "react-router-dom"
 
 import CheckoutSummary from "../../components/Order/Checkout/CheckoutSummary"
 
-import ContactData from "../../components/Order/ContactData/ContactData"
+import ContactData from "./ContactData/ContactData"
 
 export class Checkout extends Component {
   constructor(props) {
