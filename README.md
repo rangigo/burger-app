@@ -7,6 +7,8 @@ I take advantage of how the components cycle in React work to make the applicati
 I use Firebase of Google as a temporary database (will try to make my own database using Python in the future!)
 
 ---
+Note: Since the project has not finished yet so I have yet to deploy it on the web. Sorry for inconveniences.
+
 How to use:
 1) Clone this GitHub project
 2) Run "npm install" in the cloned folder
