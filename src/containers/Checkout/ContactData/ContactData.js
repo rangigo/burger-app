@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 
+import { connect } from 'react-redux'
+
 import classes from "./ContactData.css"
 
 import Button from "../../../components/UI/Button/Button"
@@ -121,8 +123,8 @@ export class ContactData extends Component {
     }
 
     const order = {
-      ingredients: this.props.ingredients,
-      price: this.props.totalPrice,
+      ingredients: this.props.ingres,
+      price: parseFloat(this.props.price.toFixed(2)),
       orderData: formData
     }
 
@@ -162,8 +164,6 @@ export class ContactData extends Component {
     for (let key in updatedOrderForm) {
       formIsValid = (updatedOrderForm[key].valid && formIsValid) 
     }
-    console.log(formIsValid)
-    console.log(updatedOrderForm)
     this.setState({ orderForm: updatedOrderForm, formIsValid: formIsValid })
   }
 
@@ -212,4 +212,10 @@ export class ContactData extends Component {
   }
 }
 
-export default ContactData
+const mapStateToProps = state => ({
+  ingres: state.ingredients,
+  price: state.totalPrice
+})
+
+
+export default connect(mapStateToProps)(ContactData)
