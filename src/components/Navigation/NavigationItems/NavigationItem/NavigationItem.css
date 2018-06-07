@@ -43,7 +43,7 @@
   .NavigationItem a.active {
     background-color: #f78234;
     border-bottom: 4px solid hsl(234, 85%, 69%);
-    color: #98f3ff;
-    font-weight: normal;
+    color: #487ee9;
+    font-weight: bold;
   }
 }

@@ -1,16 +1,13 @@
 import React, { Component } from "react"
-
 import { connect } from 'react-redux'
 
 import classes from "./ContactData.css"
-
 import Button from "../../../components/UI/Button/Button"
-
 import axios from "../../../axios-orders"
-
 import Spinner from "../../../components/UI/Spinner/Spinner"
-
 import Input from '../../../components/UI/Input/Input'
+import errorHandler from "../../../hoc/errorHandler/errorHandler"
+import * as actions from '../../../store/actions/index'
 
 export class ContactData extends Component {
   state = {
@@ -108,13 +105,11 @@ export class ContactData extends Component {
         valid: true
       }
     },
-    formIsValid: false,
-    loading: false
+    formIsValid: false
   }
 
   orderHandler = event => {
     event.preventDefault()
-    this.setState({ loading: true })
 
     const formData = {}
 
@@ -128,15 +123,7 @@ export class ContactData extends Component {
       orderData: formData
     }
 
-    axios
-      .post("/orders.json", order)
-      .then(response => {
-        this.setState({ loading: false })
-        this.props.history.push("/")
-      })
-      .catch(error => {
-        this.setState({ loading: false })
-      })
+    this.props.onOrder(order)
   }
 
   checkValidity = (value, rules) => {
@@ -201,7 +188,7 @@ export class ContactData extends Component {
       </form>
     )
 
-    if (this.state.loading) form = <Spinner />
+    if (this.props.loading) form = <Spinner />
 
     return (
       <div className={classes.ContactData}>
@@ -213,9 +200,13 @@ export class ContactData extends Component {
 }
 
 const mapStateToProps = state => ({
-  ingres: state.ingredients,
-  price: state.totalPrice
+  ingres: state.burgerBuilder.ingredients,
+  price: state.burgerBuilder.totalPrice,
+  loading: state.order.loading
 })
 
+const mapDispatchToProps = dispatch => ({
+  onOrder: order => dispatch(actions.purchase(order))
+})
 
-export default connect(mapStateToProps)(ContactData)
+export default connect(mapStateToProps, mapDispatchToProps)(errorHandler(ContactData, axios))
