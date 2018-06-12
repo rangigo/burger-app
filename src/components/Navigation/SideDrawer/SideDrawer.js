@@ -8,8 +8,7 @@ import Backdrop from "../../UI/Backdrop/Backdrop"
 import Aux from "../../../hoc/Auxi/Auxi"
 
 const sideDrawer = (props) => {
-  let assignedClasses = [classes.SideDrawer, classes.Close]
-  props.show ? assignedClasses = [classes.SideDrawer, classes.Open] : null //eslint-disable-line
+  const assignedClasses = props.show ? [classes.SideDrawer, classes.Open] : [classes.SideDrawer, classes.Close] 
 
   return (
     <Aux>
@@ -20,7 +19,7 @@ const sideDrawer = (props) => {
           <Logo />
         </div>
         <ul>
-          <NavigationItems />
+          <NavigationItems isAuth={props.isAuth} />
         </ul>
       </div>
     </Aux>

@@ -9,7 +9,9 @@ const input = props => {
 
   if (props.invalid && props.touched) {
     inputClasses.push(classes.Invalid)
-    validationError = <p className={classes.ValidationError}>Please enter a valid {props.valueType}</p>
+    props.elementConfig.type !== 'email' 
+      ? validationError = <p className={classes.ValidationError}>Please enter a valid {props.valueType}</p>
+      : validationError = <p className={classes.ValidationError}>{props.validationMsg}</p>
   }
   switch (props.elementType) {
     case "input":

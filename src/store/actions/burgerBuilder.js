@@ -46,7 +46,7 @@ export const initIngredients = () => {
 
 export const fetchFailed = () =>  {
   return {
-    type: actionTypes.FETCH_FAILED
+    type: actionTypes.FETCH_INGRES_FAILED
   }
 }
 

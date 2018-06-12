@@ -5,7 +5,8 @@ import { updateObject } from '../utility'
 const initialState = {
   ingredients: null,
   totalPrice: 4.5,
-  error: false
+  error: false,
+  building: false
 }
 
 const INGREDIENT_PRICES = {
@@ -20,7 +21,8 @@ const addIngredient = (state, action) => {
     ingredients: updateObject(state.ingredients, {
       [action.ingredientName]: state.ingredients[action.ingredientName] + 1
     }),
-    totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
+    totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName],
+    building: true
   }
   return updateObject(state, updatedState)
 }
@@ -30,7 +32,8 @@ const deleteIngredient = (state, action) => {
     ingredients: updateObject(state.ingredients, {
       [action.ingredientName]: state.ingredients[action.ingredientName] - 1
     }),
-    totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName]
+    totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName],
+    building: true
   }
   return updateObject(state, updatedObj)
 }
@@ -46,7 +49,8 @@ const setIngredients = (state, action) => {
     totalPrice: Object.keys(action.ingres)
       .map(ingreName => action.ingres[ingreName] * INGREDIENT_PRICES[ingreName])
       .reduce((sum, el) => sum + el, initialState.totalPrice),
-    error: false
+    error: false,
+    building: false
   })
 }
 
@@ -62,7 +66,7 @@ const reducer = (state = initialState, action) => {
       return deleteIngredient(state, action)
     case actionTypes.SET_INGREDIENTS:
       return setIngredients(state, action)
-    case actionTypes.FETCH_FAILED:
+    case actionTypes.FETCH_INGRES_FAILED:
       return fetchFailed(state, action)
     default:
       return state

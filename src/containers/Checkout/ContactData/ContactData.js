@@ -90,7 +90,8 @@ export class ContactData extends Component {
           required: true
         },
         valid: false,
-        touched: false
+        touched: false,
+        validationMsg: ''
       },
       deliveryMethod: {
         elementType: "select",
@@ -123,7 +124,7 @@ export class ContactData extends Component {
       orderData: formData
     }
 
-    this.props.onOrder(order)
+    this.props.onOrder(order, this.props.token)
   }
 
   checkValidity = (value, rules) => {
@@ -142,9 +143,10 @@ export class ContactData extends Component {
     const updatedElementForm = { ...updatedOrderForm[inputId] }
 
     updatedElementForm.value = event.target.value
-    updatedElementForm.valid = this.checkValidity(updatedElementForm.value, updatedElementForm.validation)
+    updatedElementForm.valid = this.checkValidity(updatedElementForm.value, updatedElementForm.validation) && event.target.validity.valid
     updatedElementForm.touched = true
-
+    updatedElementForm.validationMsg = event.target.validationMessage
+    
     updatedOrderForm[inputId] = updatedElementForm
 
     let formIsValid = true
@@ -158,7 +160,11 @@ export class ContactData extends Component {
     let orderFormArray = []
 
     for (let key in this.state.orderForm) {
-      orderFormArray.push({
+      key === 'email' ? orderFormArray.push({
+        id: key,
+        config: this.state.orderForm[key],
+        validationMsg: this.state.orderForm[key].validationMsg
+      }) : orderFormArray.push({
         id: key,
         config: this.state.orderForm[key]
       })
@@ -174,6 +180,7 @@ export class ContactData extends Component {
             value={input.config.value}
             invalid={!input.config.valid}
             touched={input.config.touched}
+            validationMsg={input.validationMsg}
             valueType={input.id}
             changed={event => this.inputChangeHandler(event, input.id)}
           />
@@ -202,11 +209,12 @@ export class ContactData extends Component {
 const mapStateToProps = state => ({
   ingres: state.burgerBuilder.ingredients,
   price: state.burgerBuilder.totalPrice,
-  loading: state.order.loading
+  loading: state.order.loading,
+  token: state.auth.token
 })
 
 const mapDispatchToProps = dispatch => ({
-  onOrder: order => dispatch(actions.purchase(order))
+  onOrder: (order, token) => dispatch(actions.purchase(order, token))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(errorHandler(ContactData, axios))

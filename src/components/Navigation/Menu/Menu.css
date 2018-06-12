@@ -1,17 +1,23 @@
 .Menu {
   margin: 10px 0;
-  display: block;
   box-sizing: border-box;
   height: 100%;
-  cursor: pointer;
+  width: 100%;
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
 }
 
 .Menu img {
-  height: 100%;
+  height: 80%
+}
+.Menu img:first-child {
+  margin-right: auto;
+  cursor: pointer;
 }
 
 @media (min-width: 500px) {
   .Menu {
-    display: none;
+     display: none;
   }
 }
