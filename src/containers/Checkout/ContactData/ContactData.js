@@ -121,7 +121,8 @@ export class ContactData extends Component {
     const order = {
       ingredients: this.props.ingres,
       price: parseFloat(this.props.price.toFixed(2)),
-      orderData: formData
+      orderData: formData,
+      userId: this.props.userId
     }
 
     this.props.onOrder(order, this.props.token)
@@ -210,7 +211,8 @@ const mapStateToProps = state => ({
   ingres: state.burgerBuilder.ingredients,
   price: state.burgerBuilder.totalPrice,
   loading: state.order.loading,
-  token: state.auth.token
+  token: state.auth.token,
+  userId: state.auth.userId
 })
 
 const mapDispatchToProps = dispatch => ({
