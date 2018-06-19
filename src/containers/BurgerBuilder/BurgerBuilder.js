@@ -12,7 +12,7 @@ import Spinner from '../../components/UI/Spinner/Spinner'
 import errorHandler from '../../hoc/errorHandler/errorHandler'
 import * as burgerBuilderActions from '../../store/actions'
 
-class BurgerBuilder extends Component {
+export class BurgerBuilder extends Component {
   state = {
     purchasing: false
   }
