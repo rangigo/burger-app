@@ -1,15 +1,28 @@
-## My first React.js project replicating a simple burger application
+# Burger application made with React/Redux
+## Live demo: https://rangigo.github.io/burger-app/
 ---
-In this project, I learn how to use React features, syntax and concepts by developing a website to make a burger order.
+In this project, I learn how to use React features, syntaxes and concepts by developing a website to make a burger order.
 
-I take advantage of how the components cycle in React work to make the application dynamic, plus using some additional JS libraries like axios, react-router-dom to access HTTP contents and routing my web. Furthermore, I apply CSS modules provided by create-react-app webpack to style my website.
+I take advantage of how the components cycle and structure in React work to make the application dynamic. I also use Redux to manage my website's states so the data flows smoothly
 
-I use Firebase of Google as a temporary database (will try to make my own database using Python in the future!)
+Some additional libraries like axios, react-router-dom are utilized to access HTTP contents and routing my web. Furthermore, I apply CSS modules provided by create-react-app webpack to style my website.
+
+I use Firebase of Google as my backend server to store data and authenticate users.
 
 ---
-Note: Since the project has not finished yet so I have yet to deploy it on the web. Sorry for inconveniences.
 
-How to use:
-1) Clone this GitHub project
-2) Run "npm install" in the cloned folder
-3) Run "npm start" to view the project
+## Features
+* Display burger ingredients dynamically based on user inputs
+* Form validation with user data
+* State management with Redux
+* Fetch user's orders from server
+* User authentication system
+
+---
+
+## Technologies used
+* React/Redux
+* React Router v4.0
+* Axios
+* Firebase
+* Webpack
