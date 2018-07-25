@@ -22,6 +22,7 @@ export class Orders extends Component {
           key={order.id}
           ingredients={order.ingredients}
           price={+order.price}
+          orderData={order.orderData}
         />
       ))
     )

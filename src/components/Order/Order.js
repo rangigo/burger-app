@@ -25,11 +25,22 @@ const order = props => {
       key={ingre.name}
     >{ingre.name}: {ingre.amount}</span>
   )
-
+  
   return (
     <div className={classes.Order}>
-      <p>Ingredients: {out}</p>
-      <p>Price: {props.price.toFixed(2)}</p>
+      <div>
+        <p>Ingredients: {out}</p>
+        <p>Price: {props.price.toFixed(2)}</p>
+      </div>
+      <div>
+        <p>Name: {props.orderData.name}</p>
+        <p>Email: {props.orderData.email}</p>
+        <p>Phone: {props.orderData.phone}</p>
+        <p>Street: {props.orderData.street}</p>
+        <p>City: {props.orderData.city}</p>
+        <p>Zipcode: {props.orderData.zipcode}</p>
+        <p style={{textTransform: 'capitalize'}}>Delivery method: {props.orderData.deliveryMethod}</p>
+      </div>
     </div>
   )
 }

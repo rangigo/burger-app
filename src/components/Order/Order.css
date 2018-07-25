@@ -4,4 +4,11 @@
   box-shadow: 0 2px 3px #ccc;
   border: 1px solid #eee;
   box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.Order p {
+  display: inline-block;
+  margin: .5em 15px;
 }
