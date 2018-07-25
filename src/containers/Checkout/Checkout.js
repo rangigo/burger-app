@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
+import swal from 'sweetalert2'
 
 import CheckoutSummary from '../../components/Order/Checkout/CheckoutSummary'
 import ContactData from './ContactData/ContactData'
@@ -17,10 +18,18 @@ export class Checkout extends Component {
   render() {
     let summary = <Redirect to="/" />
     if (this.props.ingres) {
-      const purchaseRedir = this.props.purchased ? <Redirect to="/" /> : null
+      if (this.props.purchased) {
+        swal({
+          title: 'Order succeed!',
+          text: 'Your order is being processed!',
+          type: 'success'
+        }).then(() => {
+          this.props.history.push('/')
+        })
+      }
+
       summary = (
         <div>
-          {purchaseRedir}
           <CheckoutSummary
             ingredients={this.props.ingres}
             checkOutCancelled={this.checkOutCancelled}
