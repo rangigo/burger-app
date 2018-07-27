@@ -133,7 +133,7 @@ export class Auth extends Component {
       </form>
     )
 
-    const errMsg = this.props.error ? (<p>{this.props.error.message}</p>) : null
+    const errMsg = this.props.error ? (<p style={{color: 'red', textTransform: 'capitalize'}}>{this.props.error.message.replace(/_/g, ' ').toLowerCase()}</p>) : null
 
     const authRedir = this.props.isAuth ? (<Redirect to={this.props.authRedirPath} />) : null
     return (
